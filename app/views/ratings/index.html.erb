@@ -2,8 +2,9 @@
 
 <ul>
  <% @ratings.each do |rating| %>
-   <li> <%= rating %> </li>
+   <li> <%= rating %> <%= link_to 'delete', rating_path(rating.id), method: :delete %> </li>
  <% end %>
 </ul>
 
 <p> Number of ratings: <%= @ratings.count %> </p>
+<%= link_to 'New rating', new_rating_path %>
