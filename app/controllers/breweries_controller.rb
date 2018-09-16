@@ -75,15 +75,13 @@ class BreweriesController < ApplicationController
 
     def authenticate
       admin_accounts = { "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas" }
-      authenticate_or_request_with_http_basic do |username, password| 
-        if username == "admin" and password == "secret" 
+      authenticate_or_request_with_http_basic do |username, password|
+        if admin_accounts.has_key?(username) and admin_accounts[username] == password 
            login_ok = true
         else
-          login_ok = false  # käyttäjätunnus/salasana oli väärä
+           login_ok = false
         end
-  
-        # koodilohkon arvo on sen viimeisen komennon arvo eli true/false riippuen kirjautumisen onnistumisesta
         login_ok  
-      end
     end
+  end
 end
