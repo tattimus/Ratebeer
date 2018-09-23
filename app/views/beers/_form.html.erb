@@ -23,7 +23,7 @@
   
   <div class="field">
     <%= form.label :brewey %>  
-    <%= form.select :brewery_id, options_from_collection_for_select(@brewery, :id, :to_s) %>
+    <%= form.select :brewery_id, options_from_collection_for_select(@breweries, :id, :to_s) %>
   </div> 
 
   <div class="actions">
