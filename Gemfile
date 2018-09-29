@@ -8,11 +8,18 @@ gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'sqlite3'
-end  
+end
+group :development, :test do
+  gem 'rspec-rails', '~> 3.8'
+end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
+group :test do
+  gem 'factory_bot_rails'
+end
+gem 'simplecov', require: false
 gem 'bcrypt', '~> 3.1.7'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -64,6 +71,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

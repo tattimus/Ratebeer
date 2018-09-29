@@ -9,13 +9,16 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :beer_clubs, through: :memberships
   has_secure_password
-end
 
-class Rating < ApplicationRecord
-  belongs_to :beer
-  belongs_to :user
+  def favorite_beer
+    return nil if ratings.empty?
 
-  def to_s
-    "#{beer.name} #{score}"
+    ratings.order(score: :desc).limit(1).first.beer
+  end
+
+  def favorite_style
+  end
+
+  def favorite_brewery
   end
 end
