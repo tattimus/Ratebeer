@@ -1,8 +1,13 @@
 language: ruby
-
 rvm:
 - 2.5.1
-
 script:
-- bundle exec rails db:migrate 
+- bundle exec rails db:migrate
 - bundle exec rspec -fd spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: hPUu1ATSvmrIKarmn6Fb8b5uV3A3BYrsBoDMm6XvyRGkCOigEPOu5LBT2eLjLymQKP4utfm0DVTwJlb7GqrC7DwgZ6hmQvEaO5x3JKdijHVO7HojEwY/fsrgtoJmRolhVpKKyHogUKllISw09vDyvp3mkdzo8by52FzTe24VO473Ih3xNU1hCP6bypgjCM56QT2cjUhfjqrOq2GXBQp8cEFV3T2Iyq1y1d0D51chO6t6PX7v3QCQKGua46k0a93UkgOGzTcAnIG4XukyvpMNiDaP1mMF30vR1FDcmofAi2TxtiYFbwglGR+/CypMCsvihlQyQXOFV5hugbdlOpB3IUF2hLhvxvBDavyolIcRc2FWbrq68D4tK5dc2LhhX5A4YCLVoezhOsYxH93jSo4bTcC8k3HxnUvvIqIVlScItZup9g7uSM/XyUWXOH4j5WtEDw5RRD/+rpfOGRik6Zg6tCYorWsJRfRwn3GT8qPwYo8SzTerOIdZbiDNZm9ajXxkp5WJwBslzB1zqn8gO/z4NbPVIl0Y7VLgRtwdr2nxKNCH2M1UoGVQUffMuiopqYVreXgjWP8nrXgjkaJJEw32BFbgodVA+xQfT7Yb4OJGPl96J4TSxUZsB93mZeYbKREwhe2YSVPH1848FuLcbMF7cOYwxgAwe8m1HOO5HmVzRWE=
+  app: protected-meadow-23090
+  on:
+    repo: tattimus/Ratebeer
