@@ -6,8 +6,3 @@ rvm:
 script:
 - bundle exec rails db:migrate 
 - bundle exec rspec -fd spec
-
-deploy:
-  provider: heroku
-  api_key: a5d68ca0-5b0d-4d26-826d-2e74031f763c
-  run: "rake db:migrate"
