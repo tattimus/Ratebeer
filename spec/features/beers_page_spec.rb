@@ -4,10 +4,16 @@ include Helpers
 
 describe "Beers" do
   let!(:brewery) { FactoryBot.create :brewery, name:"Koff" }
-  
+  let!(:user) { FactoryBot.create :user }
+
+  before :each do
+    sign_in(username:"Pekka", password:"Foobar1")
+  end
+
   it "when given valid name, is added to DB" do
     visit new_beer_path
-    fill_in('beer[name]', with: 'kalia')
+    expect(current_path).to eq(new_beer_path)
+    fill_in('beer[name]', with: 'IPA')
     select('IPA', from:'beer[style]')
     select('Koff', from:'beer[brewery_id]')
 
