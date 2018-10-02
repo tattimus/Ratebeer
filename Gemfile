@@ -21,6 +21,7 @@ group :test do
 end
 gem 'simplecov', require: false
 gem 'bcrypt', '~> 3.1.7'
+gem 'httparty'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
