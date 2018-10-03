@@ -18,6 +18,7 @@ group :production do
 end
 group :test do
   gem 'factory_bot_rails'
+  gem 'webmock'
 end
 gem 'simplecov', require: false
 gem 'bcrypt', '~> 3.1.7'

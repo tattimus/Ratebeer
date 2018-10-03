@@ -1,0 +1,11 @@
+<% @places.each do |place| %>
+  <% if place.id == @place_id %>
+    <h1> <%= place.name %> </h1>
+
+    <i> <%= place.status %> </i>
+  
+    <p> <%= place.street %> </p>
+  
+    <p> <%= place.zip %>, <%= session[:place_search] %></p>
+  <% end %>
+<% end %>
