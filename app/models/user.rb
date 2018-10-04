@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
     style_ratings = ratings.group_by{ |r| r.beer.style }
     averages = style_ratings.map do |style, ratings|
-      { style: style, score: average_of(ratings) }
+      { style: style.name, score: average_of(ratings) }
     end
 
     averages.max_by{ |r| r[:score] }[:style]
