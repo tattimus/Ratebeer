@@ -598,7 +598,23 @@
         null,
         2,
         2,
+        2,
         null,
+        null,
+        null
+      ],
+      "/home/tattimus/Desktop/ratebeer/lib/apixu_api.rb": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
         null,
         null
       ],
@@ -819,6 +835,6 @@
         0
       ]
     },
-    "timestamp": 1538928773
+    "timestamp": 1538934686
   }
 }
