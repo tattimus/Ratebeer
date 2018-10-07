@@ -6,6 +6,13 @@
 <% end %>
 
 <% if @places %>
+<h4>the current beer weather in <%= @places.first.city %></h4>
+
+<p><%= @weather['temp_c'] %> Celsius</p>
+
+<img src=<%= @weather['condition']['icon'] %> >
+
+<p><strong>wind</strong> <%= (@weather['wind_kph'] * 0.277777778).round(1) %> m/sec, direction <%= @weather['wind_dir'] %> </p>
   <table>
     <thead>
       <tr>
