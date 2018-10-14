@@ -27,11 +27,10 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
     @membership.user = current_user
-    flash[:notice] = current_user.username + " welcome to the club!"
 
     respond_to do |format|
       if !Membership.find_by(beer_club_id: @membership.beer_club_id, user_id: @membership.user_id) && @membership.save
-        format.html { redirect_to beer_club_path @membership.beer_club_id }
+        format.html { redirect_to beer_club_path @membership.beer_club_id, notice: current_user.username + " welcome to the club!" }
         format.json { render :show, status: :created, location: @membership }
       else
         format.html { redirect_to new_membership_path }
@@ -45,7 +44,7 @@ class MembershipsController < ApplicationController
   def update
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to @membership, notice: 'Membership was successfully updated.' }
+        format.html { redirect_to @membership, notice: "Membership was successfully updated." }
         format.json { render :show, status: :ok, location: @membership }
       else
         format.html { render :edit }
@@ -58,10 +57,9 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1.json
   def destroy
     @club = BeerClub.find_by(id: @membership.beer_club_id)
-    flash[:notice] = "Membership in " + @club.name + " ended"
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to user_path current_user.id }
+      format.html { redirect_to user_path current_user.id, notice: "Membership in " + @club.name + " ended" }
       format.json { head :no_content }
     end
   end

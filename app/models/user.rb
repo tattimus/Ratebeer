@@ -31,6 +31,11 @@ class User < ApplicationRecord
     averages.max_by{ |r| r[:score] }[:style]
   end
 
+  def self.top(n)
+    users = User.all.sort_by{ |u| u.ratings.count * -1 }
+    users.take(n)
+  end
+
   def favorite_brewery
     return nil if ratings.empty?
 

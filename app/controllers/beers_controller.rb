@@ -36,7 +36,7 @@ class BeersController < ApplicationController
 
     respond_to do |format|
       if @beer.save
-        format.html { redirect_to beers_path, notice: 'Beer was successfully created.' }
+        format.html { redirect_to beers_path, notice: "Beer was successfully created." }
         format.json { render :show, status: :created, location: @beer }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class BeersController < ApplicationController
   def update
     respond_to do |format|
       if @beer.update(beer_params)
-        format.html { redirect_to @beer, notice: 'Beer was successfully updated.' }
+        format.html { redirect_to @beer, notice: "Beer was successfully updated." }
         format.json { render :show, status: :ok, location: @beer }
       else
         format.html { render :edit }
@@ -62,11 +62,15 @@ class BeersController < ApplicationController
   # DELETE /beers/1
   # DELETE /beers/1.json
   def destroy
-    @beer.destroy
-    respond_to do |format|
-      format.html { redirect_to beers_url, notice: 'Beer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    if current_user.admin == true
+      @beer.destroy
+      respond_to do |format|
+        format.html { redirect_to beers_url, notice: "Beer was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to @beer, notice: "You dont have permission for this."
+    end  
   end
 
   private

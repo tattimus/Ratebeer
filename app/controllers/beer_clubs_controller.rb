@@ -33,7 +33,7 @@ class BeerClubsController < ApplicationController
 
     respond_to do |format|
       if @beer_club.save
-        format.html { redirect_to @beer_club, notice: 'Beer club was successfully created.' }
+        format.html { redirect_to @beer_club, notice: "Beer club was successfully created." }
         format.json { render :show, status: :created, location: @beer_club }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class BeerClubsController < ApplicationController
   def update
     respond_to do |format|
       if @beer_club.update(beer_club_params)
-        format.html { redirect_to @beer_club, notice: 'Beer club was successfully updated.' }
+        format.html { redirect_to @beer_club, notice: "Beer club was successfully updated." }
         format.json { render :show, status: :ok, location: @beer_club }
       else
         format.html { render :edit }
@@ -59,12 +59,16 @@ class BeerClubsController < ApplicationController
   # DELETE /beer_clubs/1
   # DELETE /beer_clubs/1.json
   def destroy
-    @beer_club.destroy
-    respond_to do |format|
-      format.html { redirect_to beer_clubs_url, notice: 'Beer club was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.admin
+      @beer_club.destroy
+      respond_to do |format|
+        format.html { redirect_to beer_clubs_url, notice: "Beer club was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to @beer_club, notice: "You dont have permission for this."
     end
-  end
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

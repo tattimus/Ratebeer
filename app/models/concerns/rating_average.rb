@@ -7,6 +7,10 @@ module RatingAverage
     s.each do |alkio|
       summa += alkio.score
     end
-    summa.to_f / lkm
+    if summa.zero?
+      return 0.0
+    else
+      summa.to_f / lkm
+    end
   end
 end

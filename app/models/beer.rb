@@ -6,10 +6,16 @@ class Beer < ApplicationRecord
   has_many :raters, -> { distinct }, through: :ratings, source: :user
   validates :name, presence: true
   validates :style_id, presence: true
+
   def to_s
     n = brewery_id
     m = Brewery.find_by(id: n)
     "#{name}, #{m.name}"
+  end
+
+  def self.top(n)
+    beers = Beer.all.sort_by{ |b| -(b.average_rating || 0) }
+    beers.take(n)
   end
 
   def average

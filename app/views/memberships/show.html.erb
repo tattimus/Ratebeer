@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Beer club:</strong>
   <%= @membership.beer_club_id %>
@@ -10,5 +8,5 @@
   <%= @membership.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to 'Edit', edit_membership_path(@membership), class:'btn btn-primary' %> |
 <%= link_to 'Back', memberships_path %>

@@ -12,6 +12,15 @@ class UsersController < ApplicationController
   def show
   end
 
+  def toggle_activity
+    user = User.find(params[:id])
+    user.update_attribute :closed, (not user.closed)
+  
+    new_status = user.closed? ? "closed" : "opened"
+  
+    redirect_to user, notice:"account of #{user.username} #{new_status}"
+  end
+
   # GET /users/new
   def new
     @user = User.new
@@ -28,7 +37,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -42,7 +51,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if user_params[:username].nil? && current_user == @user && @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -58,7 +67,7 @@ class UsersController < ApplicationController
       @user.destroy
       reset_session
       respond_to do |format|
-        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
         format.json { head :no_content }
       end
     end

@@ -1,6 +1,11 @@
 class RatingsController < ApplicationController
   def index
     @ratings = Rating.all
+    @recent = Rating.recent
+    @breweries = Brewery.top 3
+    @beers = Beer.top 3
+    @users = User.top 3
+    @styles = Style.top 3
   end
 
   def new
@@ -12,7 +17,7 @@ class RatingsController < ApplicationController
     @rating = Rating.new params.require(:rating).permit(:score, :beer_id)
     @rating.user = current_user
     if current_user.nil?
-      redirect_to signin_path, notice: 'you should be signed in'
+      redirect_to signin_path, notice: "you should be signed in"
     elsif @rating.save
       current_user.ratings << @rating  ## virheen aiheuttanut rivi
       redirect_to user_path current_user

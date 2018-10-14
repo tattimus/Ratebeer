@@ -3,10 +3,13 @@ FactoryBot.define do
     username { "Pekka" }
     password { "Foobar1" }
     password_confirmation { "Foobar1" }
+    admin { true }
+    closed { false } 
   end
   factory :brewery do
     name { "anonymous" }
     year { 1900 } 
+    active { true }
   end
 
   factory :beer do

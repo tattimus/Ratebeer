@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <%= form_tag places_path do %>
-  city <%= text_field_tag :city, params[:city] %>
-  <%= submit_tag "Search" %>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label"> City: </label>
+    <div class="col-sm-9">
+      <%= text_field_tag :city, params[:city], :class=> "form-control" %>
+    </div>
+      <%= submit_tag "Search", :class=> "btn btn-info" %>
+  </div>
 <% end %>
 
 <% if @places %>
@@ -13,7 +16,7 @@
 <img src=<%= @weather['condition']['icon'] %> >
 
 <p><strong>wind</strong> <%= (@weather['wind_kph'] * 0.277777778).round(1) %> m/sec, direction <%= @weather['wind_dir'] %> </p>
-  <table>
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>id</th>

@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Beers</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,8 +17,7 @@
         <td><%= beer.style.name %></td>
         <td><%= link_to beer.brewery.name, beer.brewery %></td>
         <% if current_user %>
-          <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
-          <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= edit_and_destroy_buttons(beer) %></td>
         <% end %>
       </tr>
     <% end %>
@@ -31,5 +28,5 @@
 <br>
 
 <% if not current_user.nil? %>
-  <%= link_to('New Beer', new_beer_path) %>
+  <%= link_to('New Beer', new_beer_path, class:'btn btn-success') %>
 <% end %>
