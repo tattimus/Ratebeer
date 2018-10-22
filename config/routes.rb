@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users do
     post 'toggle_activity', on: :member
   end
+  get 'beerlist', to:'beers#list'
+  get 'brewerylist', to:'breweries#list'
   root 'breweries#index'
   get 'kaikki_bisset', to: 'beers#index'
   # get 'ratings', to: 'ratings#index'

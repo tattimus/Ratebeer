@@ -20,6 +20,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'webmock'
 end
+gem 'rack-mini-profiler'
 gem 'simplecov', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
