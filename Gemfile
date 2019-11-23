@@ -24,7 +24,7 @@ gem 'rack-mini-profiler'
 gem 'simplecov', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
